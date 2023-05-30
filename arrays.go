@@ -5,6 +5,13 @@ package main
 import "fmt"
 
 func main() {
+	// f1()
+	// f2()
+	f3()
+}
+
+//@ 1. демонстрация что такое массив
+func f1() {
 	var numbers1 [5]int
 	numbers1 = [5]int{1, 2, 3, 4, 5}
 	fmt.Println(numbers1)
@@ -19,6 +26,55 @@ func main() {
 
 	// обращение к элементам массива через индексы
 	fmt.Println(numbers3[0])
+
+	// функция len возвращает длину массива
+	fmt.Println(len(numbers1))
+}
+
+//@ 2. что такое срез (slice)
+
+func f2() {
+	// make создает срез из 3 элеметнов
+	var users []string = make([]string, 3)
+	users[0] = "qwe"
+	users[1] = "rty"
+	users[2] = "zxc"
+
+	// добавление в срез
+	users = append(users, "bob")
+	fmt.Println(users)
+
+	// получение нового среза из существующего
+	users1 := users[1:3]
+	users2 := users[:3]
+	users3 := users[1:]
+	fmt.Println(users1, users2, users3)
+
+	// удаление 2-го элемента
+	users = append(users[:1], users[2:]...)
+	fmt.Println(users)
+}
+
+/*
+В отличие от массивово длина в срезах может динамически меняться. То есть можно добавлять и удалять элементы
+*/
+
+//@ 3. Что такое map (карты, отображения)
+/*
+map - это ссылка на хеш-таблицу, структуру данных, где каждый элемент представляет собой пару ключ-значение. Каждый элемент имеет уникальный
+ключ
+
+*/
+
+func f3() {
+	var strings = map[string]int{
+		"qwe": 1,
+		"rty": 2,
+		"asd": 3,
+		"fgj": 4,
+	}
+	fmt.Println(strings)
+
 }
 
 /*
